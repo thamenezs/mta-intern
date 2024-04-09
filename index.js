@@ -22,9 +22,11 @@ const fs = require('fs');
 
   fs.writeFile('citiesList.json', JSON.stringify(cities, null, 2), err => {
       if(err) throw new Error('Ops, algo deu errado');
-      console.log('Certinho!')
+      console.log('Json gerado com sucesso no arquivo de nome citiesList.json!')
   })
 
   await browser.close();
+
+  return cities;
 })();
 

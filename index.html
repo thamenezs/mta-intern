@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTA - Lista de Cidades</title>
+</head>
+<body>
+    <style>
+        ul{
+            list-style: decimal;
+        }
+    </style>
+  <h1>Lista de municípios do Brasil por população (2022)</h1>
+  <ul id="cities"></ul>
+
+  <script>
+    fetch('./citiesList.json')
+      .then(response => response.json())
+      .then(data => {
+        const citiesList = document.getElementById('cities');
+
+        data.forEach(city => {
+          const cityElement = document.createElement('li');
+          cityElement.innerHTML = `
+            <strong>Cidade:</strong> ${city.name}<br>
+            <strong>UF:</strong> ${city.UF}<br>
+            <strong>População:</strong> ${city.population}<br><br>
+          `;
+          citiesList.appendChild(cityElement);
+        });
+      })
+      .catch(error => console.error('Erro ao carregar JSON:', error));
+  </script>
+</body>
+</html>
