@@ -14,7 +14,7 @@ const fs = require('fs');
         return { 
             name: columns[2].innerText.trim(),
             UF: columns[3].innerText.trim(),
-            population: columns[4].innerText.trim()
+            population: columns[4].innerText.trim().replace(/\D/g, '')
         }
       }
     }).slice(1);
