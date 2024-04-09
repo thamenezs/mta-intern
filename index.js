@@ -19,8 +19,6 @@ async function scrapeData() {
     }).filter(Boolean);
   });
 
-  console.log(cities);
-
   await browser.close();
 
   return cities;
